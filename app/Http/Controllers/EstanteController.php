@@ -11,12 +11,10 @@ class EstanteController extends Controller
 {
     public function index()
     {
-        {
-            $emprestimos = Estante::all();
-            $livros = Livro::all();
-            $clientes = Usuario::all();
-            return view('shelf')->with('emprestimos', $emprestimos)->with('livros', $livros)->with('clientes', $clientes);
-        }
+        $emprestimos = Estante::all();
+        $livros = Livro::all();
+        $clientes = Usuario::all();
+        return view('shelf')->with('emprestimos', $emprestimos)->with('livros', $livros)->with('clientes', $clientes);
     }
 
     public function store(Request $request)
@@ -27,18 +25,20 @@ class EstanteController extends Controller
 
     public function edit(Estante $estante)
     {
-        $estante = Estante::find($id);
-        return view('shelf')->with('estante', $estante);
+        $emprestimo = Estante::find($id);
+        $livros = Livro::all();
+        $clientes = Usuario::all();
+        return view('shelf.edit')->with('emprestimo', $emprestimo)->with('livros', $livros)->with('clientes', $clientes);
     }
 
     public function update(Request $request, Estante $estante)
     {
-        $estante = Estante::find($id);
-        $estante->update($request->all());
+        $emprestimo = Estante::find($id);
+        $emprestimo->update($request->all());
         return redirect('/emprestimos');
     }
 
-    public function destroy(Estante $estante)
+    public function destroy($id)
     {
         Estante::destroy($id);
         return redirect('/emprestimos');

@@ -25,7 +25,7 @@
                     <td>{{ $a->nome }}<x/td>
                     <td>{{ $a->sobrenome }}<x/td>
                     <td>
-                        <button type="button" class="btn btn-secondary btn-sm">Editar</button>
+                        <a href="/autores/{{$a->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
                         <form action="/autores/{{$a->id}}" method="post">
                             @csrf
 					        @method('DELETE')

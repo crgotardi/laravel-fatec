@@ -4,10 +4,7 @@
     <main>
         <div class="container text-center my-3 mx-auto">
             <div class="header my-5 d-flex justify-content-between align-items-center">
-                <h1>Empréstimos</h1>
-                <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#shelfModal">
-                    Novo empréstimo
-                </button>
+                <h1>Editar</h1>
             </div>
             <table class="table table-striped">
             <thead>
@@ -33,7 +30,7 @@
                     <td>{{$e->data_devolucao}}</td>
                     <td>{{$e->status}}</td>
                     <td>
-                        <a href="/emprestimos/{{$e->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
+                        <button type="button" class="btn btn-secondary btn-sm">Editar</button>
                         <form action="/emprestimos/{{$e->id}}" method="post">
                             @csrf
 					        @method('DELETE')
@@ -54,6 +51,7 @@
             <div class="modal-content">
                 <form action="/emprestimos" method="post">
                 @csrf
+                @method('PUT')
                     <div class="modal-header">
                         <h5 class="modal-title" id="shelfModalLabel">Cadastrar empréstimo</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -61,7 +59,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col">
-                                <select class="form-select" aria-label="Default select example" name="usuario_id" value="{{old('usuario_id')}}">
+                                <select class="form-select" aria-label="Default select example" name="usuario_id" value="{{empty(old('usuario_id')) ? $emprestimo->usuario_id : old('usuario_id')}}">
                                     <option selected>Cliente</option>
                                     @foreach($clientes as $c)
                                     <option value={{$c->id}}>{{$c->nome}}</option>
@@ -72,7 +70,7 @@
                                 @endif
                             </div>
                             <div class="col">
-                                <select class="form-select" aria-label="Default select example" name="livro_id" value="{{old('livro_id')}}">
+                                <select class="form-select" aria-label="Default select example" name="livro_id" value="{{empty(old('livro_id')) ? $emprestimo->livro_id : old('livro_id')}}">
                                     <option selected>Livro</option>
                                     @foreach($livros as $l)
                                     <option value={{$l->id}}>{{$l->nome}}</option>
@@ -83,17 +81,16 @@
                                 @endif
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Data Retirada" name="data_retirada" aria-label="Data Retirada" value="{{old('data_retirada')}}">
+                                <input type="text" class="form-control" placeholder="Data Retirada" name="data_retirada" aria-label="Data Retirada" value="{{empty(old('data_retirada')) ? $emprestimo->data_retirada : old('data_retirada')}}">
                                 @if($errors->has('data_retirada'))
                                 <p class="text-danger">{{$errors->first('data_retirada')}}</p>
                                 @endif
                             </div>
                         </div>
-                        </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-dark">Cadastrar</button>
                         </div>
-                    </form>
+                    </div>
                 </form>
             </div>
         </div>

@@ -22,7 +22,7 @@ class GeneroController extends Controller
     public function edit($id)
     {
         $genero = Genero::find($id);
-        return view('genres')->with('genero', $genero);
+        return view('genres.edit')->with('genero', $genero);
     }
 
     public function update(Request $request, $id)

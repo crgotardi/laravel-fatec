@@ -25,8 +25,12 @@
                     <td>{{ $e->nome }}<x/td>
                     <td>{{ $e->local }}<x/td>
                     <td>
-                        <button type="button" class="btn btn-secondary btn-sm">Editar</button>
-                        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                         <a href="/editoras/{{$e->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
+                        <form action="/editoras/{{$e->id}}" method="post">
+                            @csrf
+					        @method('DELETE')
+                            <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

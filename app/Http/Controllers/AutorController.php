@@ -22,7 +22,7 @@ class AutorController extends Controller
     public function edit($id)
     {
         $autor = Autor::find($id);
-        return view('authors')->with('autor', $autor);
+        return view('authors.edit')->with('autor', $autor);
     }
 
     public function update(Request $request, $id)

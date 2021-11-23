@@ -37,8 +37,12 @@
                     <td>{{ $l->edicao }}</td>
                     <td>{{ $l->editora->nome }}</td>
                     <td>
-                        <button type="button" class="btn btn-secondary btn-sm">Editar</button>
-                        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                        <a href="/livros/{{$l->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
+                        <form action="/livros/{{$l->id}}" method="post">
+                            @csrf
+					        @method('DELETE')
+                            <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -77,7 +81,7 @@
                                 @endif
                             </div>
                             <div class="col">
-                                <select class="form-select" aria-label="Default select example" name="autor_id" value="{{old('nome')}}">
+                                <select class="form-select" aria-label="Default select example" name="author_id" value="{{old('author_id')}}">
                                     <option selected>Autor</option>
                                     @foreach($autores as $a)
                                     <option value={{$a->id}}>{{$a->nome}} {{$a->sobrenome}}</option>
@@ -90,7 +94,7 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col">
-                                <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição" value="{{old('nome')}}"></textarea>
+                                <textarea class="form-control" rows="3" name="descricao" placeholder="Descrição" value="{{old('descricao')}}"></textarea>
                             </div>
                         </div>
                         <div class="row">
