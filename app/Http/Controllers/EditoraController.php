@@ -22,7 +22,7 @@ class EditoraController extends Controller
     public function edit($id)
     {
         $editora = Editora::find($id);
-        return view('publishers.edit')->with('editora', $editora);
+        return view('publishers-edit')->with('editora', $editora);
     }
 
     public function update(Request $request, $id)

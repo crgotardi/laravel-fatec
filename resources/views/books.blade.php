@@ -22,7 +22,7 @@
                     <th scope="col">Ano</th>
                     <th scope="col">Edição</th>
                     <th scope="col">Editora</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col" class="text-end">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,11 +37,11 @@
                     <td>{{ $l->edicao }}</td>
                     <td>{{ $l->editora->nome }}</td>
                     <td>
+                        <form action="/livros/{{$l->id}}" method="post" class="text-end">
                         <a href="/livros/{{$l->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
-                        <form action="/livros/{{$l->id}}" method="post">
                             @csrf
 					        @method('DELETE')
-                            <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                            <input type="submit" class="btn btn-danger btn-sm" value="Excluir" />
                         </form>
                     </td>
                 </tr>

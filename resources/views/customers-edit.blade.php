@@ -6,22 +6,11 @@
             <div class="header my-5 d-flex justify-content-between align-items-center">
                 <h1>Editar</h1>
             </div>
-            <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Sobrenome</th>
-                    <th scope="col">RG</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
-            <form action="/clientes" method="post">
+            <form action="/clientes/{{$cliente->id}}" method="post">
             @csrf
             @method('PUT')
                 <div class="modal-header">
-                    <h5 class="modal-title" id="shelfModalLabel">Cadastrar cliente</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="shelfModalLabel">Editar cliente</h5>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -46,10 +35,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-dark">Cadastrar</button>
+                    <button type="submit" class="btn btn-dark">Editar</button>
                 </div>
             </form>
-            </table>
         </div>
     </main>
 

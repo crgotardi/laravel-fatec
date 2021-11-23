@@ -11,14 +11,14 @@ use \App\Http\Controllers\EditoraController;
 
 Route::resource('', HomeController::class);
 
-Route::resource('/emprestimos', EstanteController::class);
+Route::resource('emprestimos', EstanteController::class);
 
-Route::resource('/livros', LivroController::class);
+Route::resource('livros', LivroController::class);
 
-Route::resource('/clientes', UsuarioController::class);
+Route::resource('clientes', UsuarioController::class);
 
-Route::resource('/autores', AutorController::class);
+Route::resource('autores', AutorController::class);
 
-Route::resource('/generos', GeneroController::class);
+Route::resource('generos', GeneroController::class);
 
-Route::resource('/editoras', EditoraController::class);
+Route::resource('editoras', EditoraController::class);

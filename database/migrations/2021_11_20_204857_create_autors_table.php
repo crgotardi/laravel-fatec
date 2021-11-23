@@ -13,7 +13,7 @@ class CreateAutorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('autores', function (Blueprint $table) {
+        Schema::create('autors', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 100);
             $table->string('sobrenome', 100);
@@ -28,6 +28,6 @@ class CreateAutorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('autores');
+        Schema::dropIfExists('autors');
     }
 }

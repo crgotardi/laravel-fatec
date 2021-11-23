@@ -23,12 +23,12 @@ class EstanteController extends Controller
         return redirect('/emprestimos');
     }
 
-    public function edit(Estante $estante)
+    public function edit($id)
     {
         $emprestimo = Estante::find($id);
         $livros = Livro::all();
         $clientes = Usuario::all();
-        return view('shelf.edit')->with('emprestimo', $emprestimo)->with('livros', $livros)->with('clientes', $clientes);
+        return view('shelf-edit')->with('emprestimo', $emprestimo)->with('livros', $livros)->with('clientes', $clientes);
     }
 
     public function update(Request $request, Estante $estante)

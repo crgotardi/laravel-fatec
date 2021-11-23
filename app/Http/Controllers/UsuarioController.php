@@ -22,7 +22,7 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         $cliente = Usuario::find($id);
-        return view('customers.edit')->with('cliente', $cliente);
+        return view('customers-edit')->with('cliente', $cliente);
     }
 
     public function update(Request $request, $id)

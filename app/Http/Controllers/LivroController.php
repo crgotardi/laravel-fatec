@@ -29,13 +29,13 @@ class LivroController extends Controller
         return redirect('/livros');
     }
 
-    public function edit(Livro $livro)
+    public function edit($id)
     {
         $livro = Livro::find($id);
         $editoras = Editora::all();
         $autores = Autor::all();
         $generos = Genero::all();
-        return view('books.edit')->with('livro', $livro)->with('editoras', $editoras)->with('autores', $autores)->with('generos', $generos);;
+        return view('books-edit')->with('livro', $livro)->with('editoras', $editoras)->with('autores', $autores)->with('generos', $generos);;
     }
 
     public function update(Request $request, Livro $livro)

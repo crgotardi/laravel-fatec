@@ -19,7 +19,7 @@
                     <th scope="col">Previsão de entrega</th>
                     <th scope="col">Entrega</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col" class="text-end">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,13 +33,12 @@
                     <td>{{$e->data_devolucao}}</td>
                     <td>{{$e->status}}</td>
                     <td>
+                        <form action="/emprestimos/{{$e->id}}" method="post" class="text-end">
                         <a href="/emprestimos/{{$e->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
-                        <form action="/emprestimos/{{$e->id}}" method="post">
                             @csrf
 					        @method('DELETE')
-                            <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                            <input type="submit" class="btn btn-danger btn-sm" value="Excluir" />
                         </form>
-                        <button type="button" class="btn btn-danger btn-sm">Excluir</button>
                     </td>
                 </tr>
                 @endforeach

@@ -14,7 +14,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Ações</th>
+                    <th scope="col" class="text-end">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,11 +23,11 @@
                     <th scope="row">{{ $g->id }}</th>
                     <td>{{ $g->nome }}<x/td>
                     <td>
+                        <form action="/generos/{{$g->id}}" method="post" class="text-end">
                         <a href="/generos/{{$g->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
-                        <form action="/generos/{{$g->id}}" method="post">
                             @csrf
 					        @method('DELETE')
-                            <button type="button" class="btn btn-danger btn-sm">Excluir</button>
+                            <input type="submit" class="btn btn-danger btn-sm" value="Excluir" />
                         </form>
                     </td>
                 </tr>
