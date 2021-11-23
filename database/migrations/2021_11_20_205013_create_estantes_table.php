@@ -16,9 +16,9 @@ class CreateEstantesTable extends Migration
         Schema::create('estantes', function (Blueprint $table) {
             $table->id();
             $table->date('data_retirada');
-            $table->date('data_devolucao_prevista');
-            $table->date('data_devolucao');
-            $table->string('status');
+            $table->date('data_devolucao_prevista')->nullable();
+            $table->date('data_devolucao')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
 

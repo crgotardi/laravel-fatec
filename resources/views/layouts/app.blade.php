@@ -23,13 +23,22 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/livros">Livros</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/emprestimos">Empréstimos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/clientes">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/livros">Livros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/autores">Autores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/generos">Gêneros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/editoras">Editoras</a>
                     </li>
                 </ul>
                 </div>

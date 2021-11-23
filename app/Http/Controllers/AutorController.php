@@ -7,79 +7,34 @@ use Illuminate\Http\Request;
 
 class AutorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $autores = Autor::all();
+        return view('authors')->with('autores', $autores);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        Autor::create($request->all());
+        return redirect('/autores');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Autor  $autor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Autor $autor)
+    public function edit($id)
     {
-        //
+        $autor = Autor::find($id);
+        return view('authors')->with('autor', $autor);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Autor  $autor
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Autor $autor)
+    public function update(Request $request, $id)
     {
-        //
+        $autor = Autor::find($id);
+        $autor->update($request->all());
+        return redirect('/autores');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Autor  $autor
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Autor $autor)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Autor  $autor
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Autor $autor)
-    {
-        //
+        Autor::destroy($id);
+        return redirect('/autores');
     }
 }

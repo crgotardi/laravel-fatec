@@ -18,8 +18,8 @@ class CreateLivrosTable extends Migration
             $table->string('nome', 100);
             $table->integer('ano')->length(4);
             $table->integer('edicao')->length(3);
-            $table->string('descricao', 500);
-            $table->integer('quantidade')->length(5);
+            $table->string('descricao', 500)->nullable();
+            $table->integer('quantidade')->length(5)->nullable();
             $table->timestamps();
         });
 
@@ -39,8 +39,8 @@ class CreateLivrosTable extends Migration
     public function down()
     {
         Schema::table('livros', function(Blueprint $table) {
-            $table->dropForeign(['autor_id']);
-            $table->dropColumn(['autor_id']);
+            $table->dropForeign(['editora_id']);
+            $table->dropColumn(['editora_id']);
             $table->dropForeign(['genero_id']);
             $table->dropColumn(['genero_id']);
         });

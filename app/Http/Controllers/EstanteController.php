@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class EstanteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         {
@@ -24,69 +19,28 @@ class EstanteController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        Estante::create($request->all());
+        return redirect('/emprestimos');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Estante  $estante
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Estante $estante)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Estante  $estante
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Estante $estante)
     {
-        //
+        $estante = Estante::find($id);
+        return view('shelf')->with('estante', $estante);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Estante  $estante
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Estante $estante)
     {
-        //
+        $estante = Estante::find($id);
+        $estante->update($request->all());
+        return redirect('/emprestimos');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Estante  $estante
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Estante $estante)
     {
-        //
+        Estante::destroy($id);
+        return redirect('/emprestimos');
     }
 }
