@@ -26,8 +26,10 @@ class CreateLivrosTable extends Migration
         schema::table('livros', function(Blueprint $table) {
             $table->bigInteger('editora_id')->unsigned();
             $table->bigInteger('genero_id')->unsigned();
+            $table->bigInteger('autor_id')->unsigned();
             $table->foreign('editora_id')->references('id')->on('editoras');
             $table->foreign('genero_id')->references('id')->on('generos');
+            $table->foreign('autor_id')->references('id')->on('autors');
         });
     }
 

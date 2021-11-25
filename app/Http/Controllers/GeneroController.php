@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Genero;
 use Illuminate\Http\Request;
+use App\Http\Requests\GeneroRequest;
 
 class GeneroController extends Controller
 {
@@ -13,7 +14,7 @@ class GeneroController extends Controller
         return view('genres')->with('generos', $generos);
     }
 
-    public function store(Request $request)
+    public function store(GeneroRequest $request)
     {
         Genero::create($request->all());
         return redirect('/generos');
@@ -25,7 +26,7 @@ class GeneroController extends Controller
         return view('genres-edit')->with('genero', $genero);
     }
 
-    public function update(Request $request, $id)
+    public function update(GeneroRequest $request, $id)
     {
         $genero = Genero::find($id);
         $genero->update($request->all());

@@ -5,7 +5,7 @@
         <div class="container text-center my-3 mx-auto">
             <div class="header my-5 d-flex justify-content-between align-items-center">
                 <h1>Gêneros</h1>
-                <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#shelfModal">
+                <button class="btn btn-dark" id="btnModal" data-bs-toggle="modal" data-bs-target="#shelfModal">
                     Novo gênero
                 </button>
             </div>
@@ -64,4 +64,7 @@
             </div>
         </div>
     </div>
+    @if ($errors->any())
+    <script src="{{ URL::asset('js/openModal.js') }}"></script>
+    @endif
 @endsection

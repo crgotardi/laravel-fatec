@@ -1,11 +1,11 @@
 @extends('layouts/app')
-@section('title','Clientes')
+@section('title','Autores')
 @section('content')
     <main>
         <div class="container text-center my-3 mx-auto">
             <div class="header my-5 d-flex justify-content-between align-items-center">
                 <h1>Autores</h1>
-                <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#shelfModal">
+                <button class="btn btn-dark" id="btnModal" data-bs-toggle="modal" data-bs-target="#shelfModal">
                     Novo autor(a)
                 </button>
             </div>
@@ -72,4 +72,8 @@
             </div>
         </div>
     </div>
+
+    @if ($errors->any())
+    <script src="{{ URL::asset('js/openModal.js') }}"></script>
+    @endif
 @endsection

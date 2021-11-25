@@ -24,7 +24,7 @@ class AutorLivroTable extends Migration
             $table->foreign('livro_id')->references('id')
                 ->on('livros');
             $table->foreign('autor_id')->references('id')
-                ->on('autores');
+                ->on('autors');
             $table->unique(['livro_id','autor_id']);
         });
     }

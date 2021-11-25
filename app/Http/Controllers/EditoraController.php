@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Editora;
 use Illuminate\Http\Request;
+use App\Http\Requests\EditoraRequest;
 
 class EditoraController extends Controller
 {
@@ -13,7 +14,7 @@ class EditoraController extends Controller
         return view('publishers')->with('editoras', $editoras);
     }
 
-    public function store(Request $request)
+    public function store(EditoraRequest $request)
     {
         Editora::create($request->all());
         return redirect('/editoras');
@@ -25,7 +26,7 @@ class EditoraController extends Controller
         return view('publishers-edit')->with('editora', $editora);
     }
 
-    public function update(Request $request, $id)
+    public function update(EditoraRequest $request, $id)
     {
         $editora = Editora::find($id);
         $editora->update($request->all());

@@ -6,6 +6,7 @@ use App\Models\Estante;
 use App\Models\Livro;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Http\Requests\EstanteRequest;
 
 class EstanteController extends Controller
 {
@@ -17,7 +18,7 @@ class EstanteController extends Controller
         return view('shelf')->with('emprestimos', $emprestimos)->with('livros', $livros)->with('clientes', $clientes);
     }
 
-    public function store(Request $request)
+    public function store(EstanteRequest $request)
     {
         Estante::create($request->all());
         return redirect('/emprestimos');
@@ -31,7 +32,7 @@ class EstanteController extends Controller
         return view('shelf-edit')->with('emprestimo', $emprestimo)->with('livros', $livros)->with('clientes', $clientes);
     }
 
-    public function update(Request $request, Estante $estante)
+    public function update(EstanteRequest $request, Estante $estante)
     {
         $emprestimo = Estante::find($id);
         $emprestimo->update($request->all());

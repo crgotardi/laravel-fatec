@@ -8,6 +8,7 @@ use App\Models\Editora;
 use App\Models\Autor;
 use App\Models\Genero;
 use Illuminate\Http\Request;
+use App\Http\Requests\LivroRequest;
 
 class LivroController extends Controller
 {
@@ -20,12 +21,9 @@ class LivroController extends Controller
         return view('books')->with('editoras', $editoras)->with('autores', $autores)->with('livros', $livros)->with('generos', $generos);
     }
 
-    public function store(Request $request)
+    public function store(LivroRequest $livroRequest)
     {
-        Livro::create($request->all());
-        if($request->has('autor_id')){
-            Livro_Autor::create($request->all());
-        }
+        Livro::create($livroRequest->all());
         return redirect('/livros');
     }
 
@@ -38,7 +36,7 @@ class LivroController extends Controller
         return view('books-edit')->with('livro', $livro)->with('editoras', $editoras)->with('autores', $autores)->with('generos', $generos);;
     }
 
-    public function update(Request $request, Livro $livro)
+    public function update(LivroRequest $request, Livro $livro)
     {
         $livro = Livro::find($id);
         $livro->update($request->all());

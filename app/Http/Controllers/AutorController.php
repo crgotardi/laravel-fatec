@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Autor;
 use Illuminate\Http\Request;
+use App\Http\Requests\AutorRequest;
 
 class AutorController extends Controller
 {
@@ -13,7 +14,7 @@ class AutorController extends Controller
         return view('authors')->with('autores', $autores);
     }
 
-    public function store(Request $request)
+    public function store(AutorRequest $request)
     {
         Autor::create($request->all());
         return redirect('/autores');
@@ -25,7 +26,7 @@ class AutorController extends Controller
         return view('authors-edit')->with('autor', $autor);
     }
 
-    public function update(Request $request, $id)
+    public function update(AutorRequest $request, $id)
     {
         $autor = Autor::find($id);
         $autor->update($request->all());

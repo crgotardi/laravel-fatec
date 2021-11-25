@@ -6,7 +6,7 @@
             <div class="header my-5 d-flex justify-content-between align-items-center">
                 <h1>Livros</h1>
                 <div>
-                    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#shelfModal">
+                    <button class="btn btn-dark" id="btnModal" data-bs-toggle="modal" data-bs-target="#shelfModal">
                         Novo livro
                     </button>
                 </div>
@@ -81,7 +81,7 @@
                                 @endif
                             </div>
                             <div class="col">
-                                <select class="form-select" aria-label="Default select example" name="author_id" value="{{old('author_id')}}">
+                                <select class="form-select" aria-label="Default select example" name="autor_id" value="{{old('autor_id')}}">
                                     <option selected>Autor</option>
                                     @foreach($autores as $a)
                                     <option value={{$a->id}}>{{$a->nome}} {{$a->sobrenome}}</option>
@@ -127,4 +127,7 @@
             </div>
         </div>
     </div>
+    @if ($errors->any())
+    <script src="{{ URL::asset('js/openModal.js') }}"></script>
+    @endif
 @endsection

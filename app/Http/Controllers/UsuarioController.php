@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Http\Requests\UsuarioRequest;
 
 class UsuarioController extends Controller
 {
@@ -13,7 +14,7 @@ class UsuarioController extends Controller
         return view('customers')->with('clientes', $clientes);
     }
 
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
         Usuario::create($request->all());
         return redirect('/clientes');
@@ -25,7 +26,7 @@ class UsuarioController extends Controller
         return view('customers-edit')->with('cliente', $cliente);
     }
 
-    public function update(Request $request, $id)
+    public function update(UsuarioRequest $request, $id)
     {
         $cliente = Usuario::find($id);
         $cliente->update($request->all());
